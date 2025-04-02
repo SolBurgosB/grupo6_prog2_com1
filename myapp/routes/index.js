@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const indexController= require("../controllers/indexController") //requerir el controller
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', indexController.index); //definir/crear una ruta
 
-module.exports = router;
+module.exports = router; //exportar el archivo
 
+//home
