@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: black;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -74,18 +74,21 @@ hr {
 .main-header_home-link,
 .main-header_credit-link {
   display: block;
+  color: white;
 }
 
 .main-header_credit-link {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  color: white;
 }
 
 .search-form {
   position: relative;
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .search-form_input {
@@ -96,6 +99,7 @@ hr {
   border-radius: 3px;
   height: 40px;
   font-size: 1.5em;
+  color: white;
 }
 
 .search-form_button {
@@ -125,11 +129,13 @@ hr {
 .main-navbar {
   margin-top: 20px;
   display: none;
+  color: white;
 }
 
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
+  color: white;
 }
 
 .logout{
@@ -137,10 +143,11 @@ hr {
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  color: white;
 }
 
 .logout:hover{
-  color: #1259c3;
+  font-weight: bold;
 }
 
 .left-navbar a,
@@ -148,13 +155,14 @@ hr {
   display: block;
   padding: 5px 0;
   border-bottom: solid 1px var(--gray);
+  color: white;
 }
 
 
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  background-image: url(/images/banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -508,7 +516,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    font-weight: bold;
   }
 
   .left-navbar li {
