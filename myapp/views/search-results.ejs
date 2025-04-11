@@ -28,12 +28,18 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
-			Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
-			////////////////
+			<div class="buscarresponsive">
+				<form action="./search-results.html" method="GET" class="fheader aparecer">
+					<input type="search" name="q" value="" class="iheader">
+					<button class="buscar">Buscar</button>
+				</form>
+			</div>
+			<p class="completarb">No se realizó ninguna búsqueda</p>	
+			<!-- Show the "ultimos" products -->
+			<h2 class="col-12">
+				//resultados de busqueda
 			</h2>
-
-
+			
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->

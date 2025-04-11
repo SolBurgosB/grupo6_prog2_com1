@@ -27,9 +27,10 @@ body {
 }
 
 body {
-  font-family: var(--base-font-family);
-  font-weight: 300;
-  background-color: var(--light-gray);
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
 }
 
 ul,
@@ -277,7 +278,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: var(--gray);
   font-size: 3.5em;
 }
 
@@ -484,6 +485,114 @@ textarea.form-input {
   color: #fff;
 }
 
+/* CSS REGISTER */
+.completarc{
+  display: none;
+  color: black;
+  font-weight: bold;
+}
+.completare{
+  display: none;
+  color: black;
+  font-weight: bold;
+}
+.tyc{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 20px;
+  font-size: 15px;
+  color: black;
+}
+.formularioregister{
+  background-color: #5f63685c;
+  width: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.row{
+  display: flex;
+  justify-content: center;
+}
+.products-title{
+  color: black;
+}
+
+/* CSS LOGIN */
+.cajalogin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.formulariologin{
+  background-color: #5f63685c;
+  width: 400px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.flogin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.itemslogin{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  padding: 10px;
+  margin: 10px 5px;
+  width: 250px;
+  border: 1.5px black solid;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.itemslogin:hover{
+  background-color:#5f63685c;
+  border: 2px black solid;
+}
+.enviarlogin{
+  color: white;
+}
+.botoneslogin{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 150px;
+  padding: 20px;
+}
+.cuenta{
+  display: block;
+  text-wrap: nowrap;
+  color: white;
+  padding: 3px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 10px;
+  margin: 10px 5px;
+  width: 250px;
+  border: 1.5px black solid;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: rgba(32, 33, 35, 0.455);
+}
+button{
+  background-color: rgba(32, 33, 35, 0.455);
+}
+
+
+
 
 /*====== Media-Queries ======*/
 @media (min-width: 768px) {
@@ -536,3 +645,4 @@ textarea.form-input {
     margin: auto;
   }
 }
+
