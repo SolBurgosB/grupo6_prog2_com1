@@ -27,7 +27,7 @@ body {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
@@ -44,6 +44,10 @@ a {
   display: inline-block;
   text-decoration: none;
   color: inherit;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
 }
 
 figure {
@@ -65,6 +69,11 @@ hr {
   border-bottom: solid 1px var(--light-gray);
 }
 
+h2{
+  font-family: "Telex", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 /*====== Main Header ======*/
 .main-header {
@@ -181,6 +190,9 @@ hr {
   font-size: 2.4em;
   font-weight: 400;
   color: var(--gray);
+  font-family: "Telex", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .product-box {
@@ -328,6 +340,9 @@ hr {
 .product-detail-title {
   font-weight: 400;
   font-size: 2.8em;
+  font-family: "Telex", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .product-detail-description {
@@ -476,6 +491,9 @@ textarea.form-input {
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
+  font-family: "Telex", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .btn{
@@ -520,6 +538,9 @@ textarea.form-input {
 }
 .products-title{
   color: black;
+  font-family: "Telex", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* CSS LOGIN */

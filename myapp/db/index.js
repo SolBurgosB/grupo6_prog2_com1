@@ -87,7 +87,14 @@ const index = {
                 profileimage: "",
             },
         ]
-    }
+    },
+    id: function (idBuscado) {
+        const nuevoId = [];
+        for (let i = 0; i < this.products.lista.length; i++) {
+            const cadaId = this.products.lista[i];
+        if (idBuscado==cadaId.id) {
+            nuevoId.push(cadaId)
+        }}}
 }
 
-module.exports = index
+module.exports = index;

@@ -4,5 +4,6 @@ const productController= require("../controllers/productController") //requerimo
 
 router.get("/", productController.product) //definimos/creamos la ruta
 router.get("/product-add", productController.add)
+router.get("/id/:id", productController.id)
 
 module.exports=router; //exportamos el archivo
