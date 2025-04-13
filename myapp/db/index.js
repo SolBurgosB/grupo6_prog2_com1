@@ -75,17 +75,17 @@ const index = {
             {
                 username: "Celina",
                 commenttext: "¡Muy bueno me encantó!",
-                profileimage: "",
+                profileimage: "/images/tini.jpg",
             },
             {
                 username: "Pilar",
                 commenttext: "¡Súper recomendado!",
-                profileimage: "",
+                profileimage: "/images/tini.jpg",
             },
             {
                 username: "Sol",
                 commenttext: "No es mi producto favorito.",
-                profileimage: "",
+                profileimage: "/images/tini.jpg",
             },
         ]
     },

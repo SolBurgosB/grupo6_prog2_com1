@@ -1,7 +1,7 @@
 const index= require("../db/index");
 const productController= {
     product: function(req, res) {
-      res.render('product');
+      res.render('product', {listado: index.products.comments});
     },
     add: function(req, res) {
       res.render("product-add")
