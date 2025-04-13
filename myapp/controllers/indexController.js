@@ -1,11 +1,9 @@
 const { search } = require("../routes");
+const index= require("../db/index");
 
 const indexController= {
   index: function(req, res) {
-    res.render('index');
-  },
-  search: function(req, res) {
-    res.render('search-results', req.params.producto); //completar
-  },
+    res.render('index', {listado: index.products.lista});
+  }
 } //para que se renderice (que aparezca) la vista index 
 module.exports=indexController;

@@ -31,16 +31,25 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<div class="buscarresponsive">
-				<form action="./search-results.html" method="GET" class="fheader aparecer">
-					<input type="search" name="q" value="" class="iheader">
-					<button class="buscar">Buscar</button>
-				</form>
-			</div>
-			<p class="completarb">No se realizó ninguna búsqueda</p>	
+			<% for( let i = 0; i < listado.length; i++ ) { %>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product/id/1">
+							<figure class="product-box_image">
+								<img src="images/products/<%=listado[i].productname%>.png" alt="">
+							</figure>
+							<article class="product-box_data">
+								<h2><%=listado[i].productname%></h2>
+								<p><%=listado[i].productdescription%></p>
+								<p>Comentarios: 12</p>
+							</article>
+						</a>
+					</section>
+				</div>	
+			<% } %>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				//resultados de busqueda
+				Resultado: 
 			</h2>
 			
 	<!-- footer -->
