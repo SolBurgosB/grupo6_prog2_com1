@@ -95,7 +95,8 @@ const index = {
             const cadaId = this.products.lista[i];
         if (idBuscado==cadaId.id) {
             nuevoId.push(cadaId)
-        }}},
+        }}
+        return nuevoId},
 
     search: function (searchBuscado) {
         const nuevoSearch = [];
@@ -103,7 +104,8 @@ const index = {
             const cadaSearch = this.products.lista[i];
         if (searchBuscado==cadaSearch.productname) {
             nuevoSearch.push(cadaSearch)
-        }}},
+        }}
+        return nuevoSearch},
 }
 
 module.exports = index;

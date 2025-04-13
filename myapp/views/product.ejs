@@ -23,44 +23,45 @@
 	<!-- /Header -->
 	
 	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title">Nombre del producto</h2> 
-			<p class="product-detail-description">
-				<a href="/product/product-add">Editar</a>
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="./images/products/default-image.png" alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.Lorem ipsum dolor,
-						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
-						veritatis.</p>
-				</article>
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<% for( let i = 0; i < listado.length; i++ ) { %>
-							<article>
-								<img src="<%=listado.comments[i].profileimage%>" alt="">
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/users/profile">Nombre usuario: <%=listado.comments[i].username%></a> </strong>
-									<%=listado.comments[i].commenttext%></p>
-								</div>
-							</article>
-						<% } %>
-					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
+	<% for( let i = 0; i < listado.length; i++ ) { %>
+		<div class="container products-wrapper">
+			<div class="d-flex align-items-center">
+				<h2 class="products-title"><%=listado[i].productname%></h2> 
+				<p class="product-detail-description">
+					<a href="/product/product-add">Editar</a>
+				</p>
+			</div>
+			<div class="product-detail">
+				<div class="row">
+					<article class="col-12 col-lg-8 product-detail-info">
+						<img src="<%=listado[i].productimage%>" alt="" class="product-detail-img">
+						<p class="product-detail-description">
+							<%=listado[i].productdescription%></p>
+					</article>
+					<div class="col-12 col-lg-4">
+						<section class="comments">
+							<% for( let i = 0; i < comentarios.length; i++ ) { %>
+								<article>
+									<img src="<%=comentarios[i].profileimage%>" alt="">
+									<div class="data">
+										<p class="user">
+										<strong> <a href="/users/profile">Nombre usuario: <%=comentarios[i].username%></a> </strong>
+										<%=comentarios[i].commenttext%></p>
+									</div>
+								</article>
+							<% } %>
+						</section>
+						<form class="form" action="" method="POST">
+							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+						<hr>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	<% } %>
+	
 	<!-- /product detail -->
 
 	<!-- footer -->
