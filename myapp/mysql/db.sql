@@ -18,6 +18,8 @@
 --
 -- Table structure for table `comments`
 --
+CREATE SCHEMA db;
+USE db;
 
 DROP TABLE IF EXISTS `comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
