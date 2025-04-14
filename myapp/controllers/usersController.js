@@ -7,7 +7,7 @@ const usersController={
         res.render('register');
     },
     profile: function(req, res) {
-        res.render('profile', {listado: index.usuario});
+        res.render('profile', {usuario: index.usuario, listado: index.products.lista});
     },
     profileedit: function(req, res) {
         res.render('profile-edit', {listado: index.usuario});
