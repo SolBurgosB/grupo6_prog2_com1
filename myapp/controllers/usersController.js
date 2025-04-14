@@ -9,6 +9,9 @@ const usersController={
     profile: function(req, res) {
         res.render('profile', {listado: index.usuario});
     },
+    profileedit: function(req, res) {
+        res.render('profile-edit', {listado: index.usuario});
+    },
 }
 
 module.exports = usersController;

@@ -27,37 +27,34 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12 row">
-				<h2 class="products-title">Registrate</h2>
+				<h2 class="products-title">Editar perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="formularioregister">
 				<form class="fregister flogin" action="/users/login" method="get">
 					<h2 class="subtitulo">Email</h2>
-					<input type="email" placeholder="Email" class="ervalido itemslogin" >
+					<input type="email" placeholder="Email" class="ervalido itemslogin" value="<%=listado.mail%>">
 					<p class="completare">Por favor complete el campo</p>
 					<h2 class="subtitulo">Nombre de usuario</h2>
-					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin">
+					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin" value="<%=listado.username%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Contraseña</h2>
-					<input type="password" placeholder="Contraseña" class="crvalida itemslogin">
+					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="<%=listado.userpassword%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Fecha de nacimiento</h2>
-					<input type="date" placeholder="Fecha de nacimiento" class="crvalida itemslogin">
+					<input type="date" placeholder="Fecha de nacimiento" class="crvalida itemslogin" value="<%=listado.birthday%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">DNI</h2>
-					<input type="number" placeholder="DNI" class="crvalida itemslogin">
+					<input type="number" placeholder="DNI" class="crvalida itemslogin" value="<%=listado.dni%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Foto de perfil</h2>
-					<input type="text" placeholder="Foto de perfil" class="crvalida itemslogin">
+					<input type="text" placeholder="Foto de perfil" class="crvalida itemslogin" value="<%=listado.profileimage%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<section class="botoneslogin">
-						<button class="itemslogin enviarlogin" type="submit">Registrarse</button>
-						<a class="itemslogin cuenta" href="/users/login">Ya tengo una cuenta</a>
+						<button class="itemslogin enviarlogin" type="submit">Editar</button>
 					</section>	
 				</form>
 			</div>
-
-
 	<!-- footer -->
 	<%- include('./partials/footer') %>
 	<!-- /footer -->
