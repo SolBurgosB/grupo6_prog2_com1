@@ -10,9 +10,11 @@ const productController= {
       return res.render("product", {listado: index.id(req.params.id), comentarios: index.products.comments})
       },
     search: function(req, res) {
-      let product=req.params.products
+      let product=req.query.search;   
+      return res.send(product) 
       if (product != undefined) {
-          return res.render("search-results", {listado: index.search(product.productname)})
+         
+          return res.render("search-results", {listado: index.search(product)})
       } else {
           return res.render("search-results")
       }
