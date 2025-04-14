@@ -14,7 +14,7 @@ CREATE TABLE users (
   profileimage VARCHAR(500) NOT NULL
 );
 
-INSERT INTO users VALUES (DEFAULT,'Celina','celimaccari@gmail.com','Hola123', DEFAULT, DEFAULT, DEFAULT,'2006-01-05','47127379','https://em-content.zobj.net/source/apple/237/blonde-woman-type-1-2_1f471-1f3fb-200d-2640-fe0f.png');
+INSERT INTO users VALUES (0,'Celina','celimaccari@gmail.com','Hola123', DEFAULT, DEFAULT, DEFAULT,'2006-01-05','47127379','https://em-content.zobj.net/source/apple/237/blonde-woman-type-1-2_1f471-1f3fb-200d-2640-fe0f.png');
 INSERT INTO users VALUES (DEFAULT,'Pilar','pilaruncal@gmail.com','Hola345', DEFAULT, DEFAULT, DEFAULT,'2005-11-12','46861068','https://em-content.zobj.net/source/apple/237/blonde-woman-type-1-2_1f471-1f3fb-200d-2640-fe0f.png');
 INSERT INTO users VALUES (DEFAULT,'Sol','solburgos@gmail.com','Hola678', DEFAULT, DEFAULT, DEFAULT,'2005-11-15','47248478','https://emojitool.com/img/apple/ios-14.5/woman-medium-skin-tone-473.png');
 INSERT INTO users VALUES (DEFAULT,'Catalina','catalinapiantoni@gmail.com','Hola910', DEFAULT, DEFAULT, DEFAULT,'2006-01-05','47000000','https://em-content.zobj.net/source/apple/237/blonde-woman-type-1-2_1f471-1f3fb-200d-2640-fe0f.png');
@@ -25,14 +25,14 @@ CREATE TABLE products (
   productimage VARCHAR(500) NOT NULL,
   productname VARCHAR(500) NOT NULL,
   productdescription VARCHAR(500) NOT NULL,
-  userid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, /* VER */
+  userid INT UNSIGNED NOT NULL, 
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
   deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP(),
-  FOREIGN KEY (usersid) REFERENCES users(id)
+  FOREIGN KEY (userid) REFERENCES users(id)
 );
 
-INSERT INTO products VALUES (DEFAULT,'https://http2.mlstatic.com/D_NQ_NP_702169-MLA79667134087_092024-O.webp','Base líquida de larga duración',' Cobertura media a completa con acabado natural. Resiste todo el día sin sentirse pesada. Ideal para pieles mixtas a grasas.', 1, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO products VALUES (0,'https://http2.mlstatic.com/D_NQ_NP_702169-MLA79667134087_092024-O.webp','Base líquida de larga duración',' Cobertura media a completa con acabado natural. Resiste todo el día sin sentirse pesada. Ideal para pieles mixtas a grasas.', 1, DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO products VALUES (DEFAULT,'https://www.maybelline.com.ar/-/media/project/loreal/brand-sites/mny/americas/latam/products/face/concealer/instant-age-rewind-concealer/product-packshot.jpeg?rev=a3f024830ea249daaff24fdc9d832df6&cx=0.25&cy=0.31&cw=315&ch=472&hash=2CBAAF902D73D62619168645E654C814','Corrector iluminador','Cubre ojeras y manchas al instante con un efecto luminoso. Textura cremosa que se difumina fácil y no se acumula', 2, DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO products VALUES (DEFAULT,'https://m.media-amazon.com/images/I/511naEb-UOL._AC_UF1000,1000_QL80_.jpg','Rubor en crema','Aporta un toque de color suave y radiante que se integra perfectamente con la piel. Su fórmula liviana deja un acabado natural, ideal para realzar tu brillo.', 3, DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO products VALUES (DEFAULT,'https://farmaciasdelpueblo.vtexassets.com/arquivos/ids/178206/Revlon-Polvo-Traslucido-Colorstay-Blot-0309970165123_img1.png?v=637892742963630000','Polvo matificante translúcido','Sella el maquillaje y controla el brillo sin alterar el color. Acabado suave y sin flashback.', 1, DEFAULT, DEFAULT, DEFAULT);
@@ -46,15 +46,15 @@ INSERT INTO products VALUES (DEFAULT,'https://getthelookar.vtexassets.com/arquiv
 CREATE TABLE comments (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   productid INT UNSIGNED NOT NULL,
-  usersid INT UNSIGNED NOT NULL,
+  userid INT UNSIGNED NOT NULL,
   commenttext VARCHAR(500) NOT NULL,
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
   deletedAt TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP(),
   FOREIGN KEY (productid) REFERENCES products(id),
-  FOREIGN KEY (usersid) REFERENCES users(id)
+  FOREIGN KEY (userid) REFERENCES users(id)
 );
 
-INSERT INTO comments VALUES (DEFAULT, 1, 2,'¡Muy bueno me encantó!', DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO comments VALUES (0, 1, 2,'¡Muy bueno me encantó!', DEFAULT, DEFAULT, DEFAULT);
 INSERT INTO comments VALUES (DEFAULT, 2, 3,'¡Super recomendado!', DEFAULT, DEFAULT, DEFAULT);
-INSERT INTO comments VALUES (DEFAULT, 3, 1,'¡Súper recomendado!', DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO comments VALUES (DEFAULT, 3, 1,'No es mi producto favorito', DEFAULT, DEFAULT, DEFAULT);
