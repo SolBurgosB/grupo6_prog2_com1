@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/Sephora.jpg" />
+	<link width="" rel="shortcut icon" href="/images/Sephora.jpg" />
 	
 	<title>Sephora</title>
 
@@ -39,7 +39,7 @@
 			<% for( let i = 0; i < listado.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/id/1">
+						<a href="/product/id/<%=listado[0].id%>">
 							<figure class="product-box_image">
 								<img src="<%=listado[i].productimage%>" alt="">
 							</figure>

@@ -1,4 +1,4 @@
-const index = require('../db/index');
+const maquillaje = require('../db/index');
 const usersController={
     login: function(req, res) {
         res.render('login');
@@ -7,10 +7,10 @@ const usersController={
         res.render('register');
     },
     profile: function(req, res) {
-        res.render('profile', {usuario: index.usuario, listado: index.products.lista});
+        res.render('profile', {usuario: maquillaje.usuario, listado: maquillaje.products.lista});
     },
     profileedit: function(req, res) {
-        res.render('profile-edit', {listado: index.usuario});
+        res.render('profile-edit', {listado: maquillaje.usuario});
     },
 }
 

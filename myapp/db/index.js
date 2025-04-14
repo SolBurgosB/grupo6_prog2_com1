@@ -1,4 +1,4 @@
-const index = { 
+const maquillaje = { 
         usuario: {
             id: 1,
             mail: "tinistoessel@gmail.com",
@@ -91,4 +91,4 @@ const index = {
     },
 }
 
-module.exports = index;
+module.exports = maquillaje;
