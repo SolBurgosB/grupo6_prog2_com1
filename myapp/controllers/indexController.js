@@ -6,4 +6,4 @@ const indexController= {
     res.render('index', {listado: maquillaje.products.lista});
   }
 } //para que se renderice (que aparezca) la vista index 
-module.exports=indexController;
+module.exports=indexController; //Probando
