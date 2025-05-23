@@ -1,4 +1,8 @@
-const maquillaje = require('../db/index');
+const db= require("../database/models");
+const maquillaje= db.Product
+const comentarios= db.Comment
+const usuarios= db.User
+
 const usersController={
     login: function(req, res) {
         res.render('login');

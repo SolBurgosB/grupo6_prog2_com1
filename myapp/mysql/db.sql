@@ -1,5 +1,5 @@
-CREATE SCHEMA db;
-USE db;
+CREATE SCHEMA maquillaje_db;
+USE maquillaje_db;
 
 CREATE TABLE users (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
