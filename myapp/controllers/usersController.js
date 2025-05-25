@@ -30,7 +30,25 @@ const usersController={
             name: form.username, //esto viene del modelo
             email: form.email,
             password: bcryptjs.hashSync(form.password, 10),
+            birthday: form.birthday,
         }
+
+        if (form.email==""|| form.email==undefined) {
+            errores.email = "El email no puede estar vacío";
+        }
+
+        db.User.findOne({
+            where: {email: form.email }
+        })
+        .then(function(resultados) {
+            if (resultados) {
+                return res.render("register", {}); //MOSTRAR ERROR EN LA VISTA
+            }})
+        .catch(function(error) {
+            return res.send("Error al verificar el email");
+        });}
+        
+
         db.User.create(usuario)
             .then(function(results) {
                 return res.redirect("/")
