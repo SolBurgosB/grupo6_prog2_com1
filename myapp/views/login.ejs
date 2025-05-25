@@ -32,15 +32,15 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="formulariologin">
-				<form class="flogin" action="/" method="get">
+				<form class="flogin" action="/users/login" method="POST">
 					<h2 class="subtitulo">Nombre de usuario</h2>
-					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin" value="">
+					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin" value="" name="username">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Contraseña</h2>
-					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="">
+					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="" name="password">
 					<p class="completarc">Por favor complete el campo</p>
 					<label class="check" for="">
-                        Recordarme<input type="checkbox" name="check" value="">
+                        Recordarme<input type="checkbox" name="check" value="" name="recordarme">
                     </label>
 					<section class="botoneslogin">
 						<button type="submit" class="itemslogin enviarlogin">Ingresá</button>
