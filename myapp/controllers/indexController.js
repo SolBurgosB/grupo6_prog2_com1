@@ -1,14 +1,13 @@
 const { search } = require("../routes");
 const db= require("../database/models");
-const maquillaje= db.Product
 
 const indexController= {
   index: function(req, res) {
     //res.render('index', {listado: maquillaje.products.lista});
-    let relacion= {
+    /*let relacion= {
             include: [{association: "product"}] //VER ASSOCIATION
-        }
-        Product.findAll(relacion)
+        }*/
+        db.Product.findAll()
             .then(function(resultados){
                 return res.render("index", {listado: resultados});
             })

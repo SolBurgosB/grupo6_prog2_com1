@@ -19,15 +19,17 @@
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
-	<!-- Header -->
-	<%- include('./partials/header') %>
-	<!-- /Header -->
+	
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 	
 	<!-- Banner -->
 	<div class="banner">
 		<img src="images/banner.jpg" alt="Banner de ofertas">
 	</div>
-	<!-- /Banner -->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">

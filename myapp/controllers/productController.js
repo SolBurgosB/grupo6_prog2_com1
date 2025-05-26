@@ -20,8 +20,11 @@ const productController= {
     },
 
     add: function(req, res) {
-      res.render("product-add", {listado: maquillaje.usuario})
-    },
+      if(req.session.user == undefined ){
+        return res.redirect('/')
+      } else {
+        res.render('profile-edit', {listado: maquillaje.usuario});
+      }},
 
     //VERRRR
     /*searchid: function (idBuscado) {

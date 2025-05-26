@@ -7,7 +7,7 @@ const usuarios= db.User
 const usersController={
     login: function(req, res) {
         if (req.session.user !=undefined) {
-            return res.redirect("/")
+            return res.redirect("/profile")
         }
         else{
             return res.render("login")
@@ -25,43 +25,45 @@ const usersController={
     create: function(req, res){
         let form=req.body;
         
-        //guardar el usuario
+        //guardar el usuario, traerlo del formulario de register al controlador
         let usuario={
-            name: form.username, //esto viene del modelo
+            username: form.username, //esto viene del modelo
             email: form.email,
-            password: bcryptjs.hashSync(form.password, 10),
+            userpassword: bcryptjs.hashSync(form.userpassword, 10),
             birthday: form.birthday,
+            dni: form.dni,
+            profileimage: form.profileimage,
+            createdAt: "", //VER como hacer y si no va en el create
         }
 
         if (form.email==""|| form.email==undefined) {
-            errores.email = "El email no puede estar vacío";
-        }
+            return res.redirect("/users/register") //nunca más usar render para POST, usar redirect
+        } //VER si agregar then y catch, mostrar error en la vista
 
-        db.User.findOne({
-            where: {email: form.email }
+        db.User.findOne({where: {email: form.email }})
+        .then(function (resultado) {
+            if (resultado !=null) {
+                return res.redirect("/users/register")}}) //MOSTRAR ERROR
+        .catch(function(error){
+            return res.send(error)
         })
-        .then(function(resultados) {
-            if (resultados) {
-                return res.render("register", {}); //MOSTRAR ERROR EN LA VISTA
-            }})
-        .catch(function(error) {
-            return res.send("Error al verificar el email");
-        });}
-        
 
+        if (form.userpassword.length<3 || form.userpassword==""|| form.userpassword==undefined) {
+            return res.redirect("/users/register") //nunca más usar render para POST, usar redirect
+        } //VER si agregar then y catch, mostrar error en la vista
+        
         db.User.create(usuario)
             .then(function(results) {
-                return res.redirect("/")
+                return res.redirect("/users/login")
             })
             .catch(function(error) {
                 return res.send(error)
-            })
-        
+            })     
     },
     createLogin: function(req, res) {
         let userInfo = {
             email: req.body.email,
-            password:  req.body.password,
+            userpassword:  req.body.userpassword,
             recordarme:  req.body.recordarme
         }
 
@@ -69,7 +71,7 @@ const usersController={
         db.User.findOne({ where: { email: userInfo.email } })       
             .then(function (resultado) {
                 if (resultado !=null) {
-                    if (bcryptjs.compareSync(userInfo.password, resultado.password)){ 
+                    if (bcryptjs.compareSync(userInfo.userpassword, resultado.userpassword)){ 
                         req.session.user = userInfo //poner en session
     
                         // check de recordarme?
@@ -77,7 +79,7 @@ const usersController={
                             // como se crea una cookie?
                             res.cookie("user", userInfo, { maxAge: 150000});
                         }
-                        res.redirect("/movies")
+                        res.redirect("/")
                         }
                     else{
                         res.render("login")
@@ -95,8 +97,16 @@ const usersController={
         res.render('profile', {usuario: maquillaje.usuario, listado: maquillaje.products.lista});
     },
     profileedit: function(req, res) {
-        res.render('profile-edit', {listado: maquillaje.usuario});
+        if(req.session.user == undefined ){
+            return res.redirect('/')
+        } else {
+            res.render('profile-edit', {listado: maquillaje.usuario});
+        }
     },
+    logout: function(req, res) {
+        req.session.destroy();
+        return res.redirect('/')
+    }
 }
 
 module.exports = usersController;
