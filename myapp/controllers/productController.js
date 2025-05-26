@@ -5,7 +5,7 @@ let op=db.Sequelize.Op
 let relacion= {
             include: [
               {association: "comments",
-                include: {association: "users"}
+                include: {association: "user"}
               }]}
 
 const productController= {
@@ -38,9 +38,9 @@ const productController= {
 
     id: function(req, res){
         //Mostrar los datos de una película las pleículas en la vista movies.ejs. Modificá el código para conseguir el objetivo.
-        db.Product.findByPk(req.params.id)        
+        db.Product.findByPk(req.params.id, relacion)        
             .then(function (resultados) {
-                return res.render("product", {listado: resultados})
+              return res.render("product", {listado: resultados}) //NO USAMOS REDIRECT PORQUE NO ES UN FORMULARIO
             })
             .catch(function(error){
                 return res.send(error)
@@ -51,7 +51,7 @@ const productController= {
       //Mostrar los datos de una película las pleículas en la vista movies.ejs. Modificá el código para conseguir el objetivo.
       db.Product.findAll({where: [{productname: { [op.like]: "%" + req.query.search + "%" }}]})       
           .then(function (resultados) {
-              return res.render("search-results", {listado: resultados})
+              return res.render("search-results", {listado: resultados, producto: req.query.search})
           })
           .catch(function(error){
               return res.send(error)

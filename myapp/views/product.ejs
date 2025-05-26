@@ -27,10 +27,9 @@
 	<!-- /Header -->
 	
 	<!-- product detail -->
-	<% for( let i = 0; i < listado.length; i++ ) { %>
 		<div class="container products-wrapper">
 			<div class="d-flex align-items-center">
-				<h2 class="products-title"><%=listado[i].productname%></h2> 
+				<h2 class="products-title"><%=listado.productname%></h2> 
 				<p class="product-detail-description">
 					<a href="/product/product-add">Editar</a>
 				</p>
@@ -38,24 +37,24 @@
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src="<%=listado[i].productimage%>" alt="" class="product-detail-img">
+						<img src="<%=listado.productimage%>" alt="" class="product-detail-img">
 						<p class="product-detail-description">
-							<%=listado[i].productdescription%></p>
+							<%=listado.productdescription%></p>
 					</article>
 					<div class="col-12 col-lg-4">
 						<section class="comments">
-							<% for( let i = 0; i < comentarios.length; i++ ) { %>
+							<% for( let i = 0; i < listado.comments.length; i++ ) { %>
 								<article>
-									<img src="<%=comentarios[i].profileimage%>" alt="">
+									<img src="<%=listado.comments[i].user.profileimage%>" alt="">
 									<div class="data">
 										<p class="user">
-										<strong> <a href="/users/profile"><%=comentarios[i].username%></a> </strong>
-										<%=comentarios[i].commenttext%></p>
+										<strong> <a href="/users/profile"><%=listado.comments[i].user.username%></a> </strong>
+										<%=listado.comments[i].commenttext%></p>
 									</div>
 								</article>
 							<% } %>
 						</section>
-						<form class="form" action="/product/id/1" method="get">
+						<form class="form" action="/product/id/<%= listado.id %>" method="get">
 							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 						</form>
@@ -63,9 +62,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	<% } %>
-	
+		</div> 
+
+
 	<!-- /product detail -->
 
 	<!-- footer -->
