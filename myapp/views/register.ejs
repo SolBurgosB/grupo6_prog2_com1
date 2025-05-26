@@ -20,7 +20,11 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/header') %>
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('./partials/header') %>
+	<% } %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -33,22 +37,22 @@
 			<div class="formularioregister">
 				<form class="fregister flogin" action="/users/newuser" method="POST">
 					<h2 class="subtitulo">Email</h2>
-					<input type="email" placeholder="Email" class="ervalido itemslogin" value="" name="email">
+					<input type="email" placeholder="Email" class="ervalido itemslogin" value="" name="email"> <!--que name coincida con las columnas del modelo--> 
 					<p class="completare">Por favor complete el campo</p>
 					<h2 class="subtitulo">Nombre de usuario</h2>
 					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin" value="" name="username">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Contraseña</h2>
-					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="" name="password">
+					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="" name="userpassword">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Fecha de nacimiento</h2>
-					<input type="date" placeholder="Fecha de nacimiento" class="crvalida itemslogin" value="" name="">//VER NAME
+					<input type="date" placeholder="Fecha de nacimiento" class="crvalida itemslogin" value="" name="birthday"> 
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">DNI</h2>
-					<input type="number" placeholder="DNI" class="crvalida itemslogin" value="" name=""> //VER NAME
+					<input type="number" placeholder="DNI" class="crvalida itemslogin" value="" name="dni"> 
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Foto de perfil</h2>
-					<input type="text" placeholder="Foto de perfil" class="crvalida itemslogin" value="" name=""> //VER NAME
+					<input type="text" placeholder="Foto de perfil" class="crvalida itemslogin" value="" name="profileimage"> 
 					<p class="completarc">Por favor complete el campo</p>
 					<section class="botoneslogin">
 						<button class="itemslogin enviarlogin" type="submit">Registrarse</button>
