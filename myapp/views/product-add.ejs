@@ -36,15 +36,15 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="formulariologin">
-				<form class="flogin" action="/" method="get">
+				<form class="flogin" action="/product/addProduct" method="post">
 					<h2 class="subtitulo">Imagen</h2>
-					<input type="file" placeholder="Imagen" class="crvalida itemslogin" value="">
+					<input type="file" placeholder="Imagen" class="crvalida itemslogin" value="" name="productimage">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Nombre del producto</h2>
-					<input type="text" placeholder="Nombre del producto" class="crvalida itemslogin" value="">
+					<input type="text" placeholder="Nombre del producto" class="crvalida itemslogin" value="" name="productname">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Descripción del producto</h2>
-					<input type="text" placeholder="Descripción del producto" class="crvalida itemslogin" value="">
+					<input type="text" placeholder="Descripción del producto" class="crvalida itemslogin" value="" name="productdescription">
 					<p class="completarc">Por favor complete el campo</p>
 					<section class="botoneslogin">
 						<button type="submit" class="itemslogin enviarlogin">Agregar producto</button>

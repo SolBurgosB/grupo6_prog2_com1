@@ -23,9 +23,49 @@ const productController= {
       if(req.session.user == undefined ){
         return res.redirect('/')
       } else {
-        res.render('profile-edit', {listado: maquillaje.usuario});
+        res.render('product-add');
       }},
 
+    addProduct: function(req, res){
+              let form=req.body;
+              //guardar el usuario, traerlo del formulario de register al controlador
+              let producto={
+                  productimage: form.productimage, //esto viene del modelo
+                  productname: form.productname,
+                  productdescription: form.productdescription,
+                  userid: req.session.user.id,
+                  createdAt: new Date(), //VER como hacer y si no va en el create
+              }
+              db.Product.create(producto)
+                  .then(function(resultados) {
+                      return res.redirect("/product/product-add")
+                  })
+                  .catch(function(error) {
+                      return res.send(error)
+                  })     
+          },
+    addComment: function(req, res){
+      if(req.session.user == undefined ){
+        return res.redirect('/users/login')
+      } 
+      else {
+        let form=req.body;
+              //guardar el usuario, traerlo del formulario de register al controlador
+              let comentario={
+                  commenttext: form.productcomment, //esto viene del modelo
+                  userid: req.session.user.id,
+                  productid: req.params.id,
+                  createdAt: new Date(), //VER como hacer y si no va en el create
+              }
+              db.Comment.create(comentario)
+                  .then(function(resultados) {
+                      return res.redirect('/')
+                  })
+                  .catch(function(error) {
+                      return res.send(error)
+                  })     
+          }
+        },
     //VERRRR
     /*searchid: function (idBuscado) {
       const nuevoId = [];

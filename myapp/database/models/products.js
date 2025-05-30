@@ -38,11 +38,11 @@ module.exports = function (sequelize, dataTypes ) {
         Product.belongsTo(models.User, { //Muchos productos pertenecen a un usuario 
             as: "user", //Con belongsTo el alias va en SINGULAR
             foreignKey: "userid" //Queda igual (la comparte con users.js)
-        }),
+        });
     Product.hasMany(models.Comment, { //Un producto tiene muchos comentarios
             as: "comments",
             foreignKey: "productid" // "productid" lo saco de FOREIGN KEY ("...") de la tabla de mysql (varía dependiendo la tabla)
-        })
+        });
     }
     return Product;
 }

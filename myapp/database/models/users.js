@@ -44,11 +44,11 @@ module.exports = function (sequelize, dataTypes ) {
         User.hasMany(models.Product, { //Un usuario tiene muchos productos
             as: "products", //Con hasMany el alias va en PLURAL
             foreignKey: "userid" //Queda igual (la comparte con products.js)
-        }),
+        });
         User.hasMany(models.Comment, { //Un usuario tiene muchos comentarios 
             as: "comments",
             foreignKey: "userid" // "userid" lo saco de FOREIGN KEY ("...") de la tabla de mysql
-        })
+        });
     }
     return User;
 }

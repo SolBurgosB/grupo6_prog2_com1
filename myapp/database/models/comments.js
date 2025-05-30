@@ -35,11 +35,11 @@ module.exports = function (sequelize, dataTypes ) {
         Comment.belongsTo(models.User, { //Muchos comentarios pertenecen a un usuario 
             as: "user", //Con belongsTo el alias va en SINGULAR
             foreignKey: "userid" 
-        })
+        });
         Comment.belongsTo(models.Product, { //Muchos comentarios pertenecen a un producto
             as: "product", //Con belongsTo el alias va en SINGULAR
             foreignKey: "productid" // "productid" lo saco de FOREIGN KEY ("...") de la tabla de mysql (varía dependiendo la tabla)
-        })
+        });
     }
     return Comment;
 }
