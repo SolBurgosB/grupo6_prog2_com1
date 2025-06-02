@@ -29,7 +29,7 @@ const usersController={
             return res.redirect("/profile")
         }
         else{
-            return res.render("register")
+            return res.render("register", {error: null})
         }
     },
     create: function(req, res){
@@ -47,20 +47,22 @@ const usersController={
         }
 
         if (form.email==""|| form.email==undefined) {
-            return res.redirect("/users/register") //nunca más usar render para POST, usar redirect
-        } //VER si agregar then y catch, mostrar error en la vista
+            return res.render("register", {error: "hola"}) //aca usamos render para poder mostrar el error. ESTA BIEN???????
+        } 
+         //VER si agregar then y catch, mostrar error en la vista
 
         db.User.findOne({where: {email: form.email }})
         .then(function (resultado) {
             if (resultado !=null) {
-                return res.redirect("/users/register")}}) //MOSTRAR ERROR
+                return res.render("register", {error: "hola"})}
+            }) //MOSTRAR ERROR
         .catch(function(error){
             return res.send(error)
         })
-
+        //nunca más usar render para POST, usar redirect
+         //VER si agregar then y catch, mostrar error en la vista
         if (form.userpassword.length<3 || form.userpassword==""|| form.userpassword==undefined) {
-            return res.redirect("/users/register") //nunca más usar render para POST, usar redirect
-        } //VER si agregar then y catch, mostrar error en la vista
+            return res.render("register", {error: "hola"})}
         
         db.User.create(usuario)
             .then(function(results) {
@@ -68,7 +70,7 @@ const usersController={
             })
             .catch(function(error) {
                 return res.send(error)
-            })     
+            })
     },
     createLogin: function(req, res) {
         let userInfo = {
