@@ -1,19 +1,27 @@
 const db= require("../database/models");
-let bcryptjs= require("bcryptjs")
+let bcryptjs= require("bcryptjs");
+const comments = require("../database/models/comments");
 const maquillaje= db.Product
 const comentarios= db.Comment
 const usuarios= db.User
 let op=db.Sequelize.Op
 let relacion = {
     include: [
-        { association: "products", include: [
-            { association: "comments", include: [
-                { association: "user" }
-            ]}
-        ]},
-        { association: "comments" }
-    ]
-}
+    {
+      association: "products", // productos que tiene el usuario
+      include: [
+        {
+          association: "comments", // comentarios recibidos en sus productos
+          include: [{ association: "user" }] // usuario que hizo ese comentario
+        }
+      ]
+    },
+    {
+      association: "comments", // comentarios que el usuario escribió
+      include: [{ association: "product" }] // producto al que comentó
+    }
+  ]
+} 
 
 const usersController={
     login: function(req, res) {
@@ -109,21 +117,42 @@ const usersController={
             })
     },
     //CAMBIAR PARA QUE FUNCIONE COMO BASE DE DATOS
-    profile: function(req, res) {
+    /*profile: function(req, res) {
         db.User.findOne({ where: {email: req.session.user.email}}, relacion)
             .then(function(resultados){
-                return res.render("profile", {usuario: resultados, listado: resultados.products});
+                return res.render("profile", {usuario: resultados, listado: resultados.products, comentarios: resultados.comments});
             })
             .catch(function(error){
                 return res.send(error);
             })
-    },
-    profileedit: function(req, res) {
-        if(req.session.user == undefined ){
-            return res.redirect('/')
-        } else {
-            res.render('profile-edit', {listado: maquillaje.usuario});
+    },*/
+    profile: function (req, res) {
+        if (req.session.user == undefined) {
+            return res.redirect('/users/login');
         }
+        db.Product.findAll({
+            where: { userid: req.session.user.id }
+        })
+
+            .then(function (resultados) {
+                return res.render('profile', {
+                    usuario: req.session.user,
+                    productos: resultados,
+                });
+            })
+             .catch(function(error){
+                return res.send(error);
+            })
+        },
+
+    profileedit: function(req, res) {
+        db.User.findByPk(req.session.user.id) // traer el usuario completo desde la base
+            .then(function(resultados) {
+                res.render('profile-edit', { usuario: resultados });
+            })
+            .catch(function(error) {
+                res.send(error);
+            });
     },
     logout: function(req, res) {
         req.session.destroy();

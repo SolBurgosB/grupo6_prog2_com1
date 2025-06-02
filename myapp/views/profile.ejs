@@ -43,9 +43,12 @@
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
 				</div>
 				<div>
-					<ul class="">
-						<li>8 productos</li>
-						<li>200 comentarios</li>
+					<ul>
+					<% if (productos && productos.length > 0) { %>
+						<li><%= productos.length %> productos</li>
+					<% } else { %>
+						<li>0 productos</li>
+					<% } %>
 					</ul>
 				</div>
 			</div>
@@ -61,18 +64,18 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% if (listado && listado.length > 0) { %>
-			<% for( let i = 0; i < listado.length; i++ ) { %>
+			<% if (productos && productos.length > 0) { %>
+			<% for( let i = 0; i < productos.length; i++ ) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/id/<%= listado[i].id %>">
+						<a href="/product/id/<%= productos[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%=listado[i].productimage%>" alt="">
+								<img src="<%=productos[i].productimage%>" alt="">
 							</figure>
 							<article class="product-box_data">
-								<h2><%=listado[i].productname%></h2>
-								<p><%=listado[i].productdescription%></p>
-								<p>Comentarios: <%= listado[i].comments.length %></p>
+								<h2><%=productos[i].productname%></h2>
+								<p><%=productos[i].productdescription%></p>
+								
 							</article>
 						</a>
 					</section>

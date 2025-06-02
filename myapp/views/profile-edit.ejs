@@ -35,24 +35,24 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="formularioregister">
-				<form class="fregister flogin" action="/users/login" method="get">
+				<form class="fregister flogin" action="/" method="get">
 					<h2 class="subtitulo">Email</h2>
-					<input type="email" placeholder="Email" class="ervalido itemslogin" value="<%=listado.email%>">
+					<input type="email" class="ervalido itemslogin" value="<%=usuario.email%>">
 					<p class="completare">Por favor complete el campo</p>
 					<h2 class="subtitulo">Nombre de usuario</h2>
-					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin" value="<%=listado.username%>">
+					<input type="text" class="crvalida itemslogin" value="<%=usuario.username%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Contraseña</h2>
-					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="<%=listado.userpassword%>">
+					<input type="password" class="crvalida itemslogin" value="<%=usuario.userpassword%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Fecha de nacimiento</h2>
-					<input type="date" placeholder="Fecha de nacimiento" class="crvalida itemslogin" value="<%=listado.birthday%>">
+					<input type="date" class="crvalida itemslogin" value="<%=usuario.birthday%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">DNI</h2>
-					<input type="number" placeholder="DNI" class="crvalida itemslogin" value="<%=listado.dni%>">
+					<input type="number" class="crvalida itemslogin" value="<%=usuario.dni%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<h2 class="subtitulo">Foto de perfil</h2>
-					<input type="text" placeholder="Foto de perfil" class="crvalida itemslogin" value="<%=listado.profileimage%>">
+					<input type="text" class="crvalida itemslogin" value="<%=usuario.profileimage%>">
 					<p class="completarc">Por favor complete el campo</p>
 					<section class="botoneslogin">
 						<button class="itemslogin enviarlogin" type="submit">Editar</button>
