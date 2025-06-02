@@ -2,11 +2,12 @@ const db= require("../database/models");
 const maquillaje= db.Product
 const comentarios= db.Comment
 let op=db.Sequelize.Op
+
 let relacion= {
             include: [
               {association: "comments",
                 include: {association: "user"}
-              }]}
+              }]};
 
 const productController= {
     product: function(req, res) {
@@ -87,7 +88,10 @@ const productController= {
 
     search: function(req, res){
       //Mostrar los datos de una película las pleículas en la vista movies.ejs. Modificá el código para conseguir el objetivo.
-      db.Product.findAll({where: [{productname: { [op.like]: "%" + req.query.search + "%" }}]})       
+      db.Product.findAll({where: {productname: { [op.like]: "%" + req.query.search + "%" }
+    },
+    include: [{ association: "user" }]
+  })
           .then(function (resultados) {
               return res.render("search-results", {listado: resultados, producto: req.query.search})
           })

@@ -283,6 +283,10 @@ h2{
 }
 
 /*====== Footer ======*/
+.f{
+  font-size: 15px;
+  color: var(--gray);
+}
 .main-footer {
   background-color: #ffffff;
   padding: 20px 0;
@@ -514,8 +518,8 @@ textarea.form-input {
   font-weight: bold;
 }
 .completare{
-  display: none;
-  color: black;
+  display: block;
+  color: red;
   font-weight: bold;
 }
 .tyc{

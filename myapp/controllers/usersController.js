@@ -12,7 +12,7 @@ const usersController={
             return res.redirect("/profile")
         }
         else{
-            return res.render("login")
+            return res.render("login", {error: null})
         }
     },
     register: function(req, res) {
@@ -37,14 +37,14 @@ const usersController={
         }
 
         if (form.email==""|| form.email==undefined) {
-            return res.render("register", {error: "hola"}) //aca usamos render para poder mostrar el error. ESTA BIEN???????
+            return res.render("register", {error: "Por favor revise el email"}) //aca usamos render para poder mostrar el error. ESTA BIEN???????
         } 
          //VER si agregar then y catch, mostrar error en la vista
 
         db.User.findOne({where: {email: form.email }})
         .then(function (resultado) {
-            if (resultado !=null) {
-                return res.render("register", {error: "hola"})}
+            if (resultado!=null) {
+                return res.render("register", {error: "El email ya está registrado"})}
             }) //MOSTRAR ERROR
         .catch(function(error){
             return res.send(error)
@@ -52,7 +52,7 @@ const usersController={
         //nunca más usar render para POST, usar redirect
          //VER si agregar then y catch, mostrar error en la vista
         if (form.userpassword.length<3 || form.userpassword==""|| form.userpassword==undefined) {
-            return res.render("register", {error: "hola"})}
+            return res.render("register", {error: "Por favor revise la contraseña"})}
         
         db.User.create(usuario)
             .then(function(results) {
@@ -79,7 +79,8 @@ const usersController={
                         email: resultado.email,
                         username: resultado.username,
                         profileimage: resultado.profileimage
-                    }; //poner en session
+                    }
+                    
     
                         // check de recordarme?
                         if (userInfo.recordarme != undefined) {
@@ -89,11 +90,11 @@ const usersController={
                         res.redirect("/")
                         }
                     else{
-                        res.render("login")
+                        res.render("login", {error: "Por favor revise los datos ingresados"})
                     }
                 }
                 else{
-                    res.render("register")
+                    res.render("register", {error: null})
                 }})
             .catch(function(error){
                 return res.send(error)
@@ -149,14 +150,20 @@ const usersController={
             })
     },
     profileedit: function(req, res) {
-        db.User.findByPk(req.session.user.id) // traer el usuario completo desde la base
+        if (req.session.user ==undefined) {
+            return res.redirect("/users/login")
+        }
+        else{
+             db.User.findByPk(req.session.user.id) // traer el usuario completo desde la base
             .then(function(resultados) {
                 res.render('profile-edit', { usuario: resultados });
             })
             .catch(function(error) {
                 res.send(error);
             });
+        }
     },
+       
     logout: function(req, res) {
         req.session.destroy();
         return res.redirect('/')

@@ -12,7 +12,6 @@ const indexController= {
         include: [{association: "comments"}]}
         ]}
         
-     //VER ASSOCIATION
         db.Product.findAll(relacion)
             .then(function(resultados){
                 return res.render("index", {listado: resultados});

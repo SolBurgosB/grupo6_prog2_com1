@@ -2,90 +2,90 @@
 <html lang="es">
 <!-- Include Head -->
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/Sephora.jpg" />
-	
-	<title>Sephora</title>
-			<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Telex&display=swap" rel="stylesheet">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/app.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link width="" rel="shortcut icon" href="/images/Sephora.jpg" />
+    
+    <title>Sephora</title>
+            <!-- Font Awesome Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Telex&display=swap" rel="stylesheet">
+    <!-- Bootstrap Grid Stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+    <!-- Own Stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado') %>
-	<% } else { %>
-		<%- include('./partials/header') %>
-	<% } %>
-	<!-- /Header -->
+    <!-- Header -->
+    <% if (locals.user != undefined) { %>
+        <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+        <%- include('./partials/header') %>
+    <% } %>
+    <!-- /Header -->
 
-	<!-- Datos del usuario -->
-	
-	<section class="info-usuario container products-wrapper">
-		<div class="row">
-			<div class="img-container offset-3 col-2">
-				<img src="<%=usuario.profileimage%>" alt="foto de perfil" class="foto-perfil">
-			</div>
-			<div class="data-container col-6">
-				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%=usuario.username%> 
-						<a href="/users/profile-edit">
-							<i class="fas fa-cog"></i>
-						</a>
-					</h1>
-					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
-				</div>
-				<div>
-					<ul>
-					<% if (productos && productos.length > 0) { %>
-						<li><%= productos.length %> productos</li>
-					<% } else { %>
-						<li>0 productos</li>
-					<% } %>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<!-- /Datos del usuario -->
+    <!-- Datos del usuario -->
+    
+    <section class="info-usuario container products-wrapper">
+        <div class="row">
+            <div class="img-container offset-3 col-2">
+                <img src="<%=usuario.profileimage%>" alt="foto de perfil" class="foto-perfil">
+            </div>
+            <div class="data-container col-6">
+                <div class="d-flex align-items-center ">
+                    <h1 class="main-title"><%=usuario.username%> 
+                        <a href="/users/profile-edit">
+                            <i class="fas fa-cog"></i>
+                        </a>
+                    </h1>
+                    <a class="btn mt-3 ml-4" href="">SEGUIR</a>
+                </div>
+                <div>
+                    <ul>
+                    <% if (productos && productos.length > 0) { %>
+                        <li><%= productos.length %> productos</li>
+                    <% } else { %>
+                        <li>0 productos</li>
+                    <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- /Datos del usuario -->
 
-	<!-- Mis productos -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
-			</div>
-			<!-- Show mis productos -->
-			<% if (productos && productos.length > 0) { %>
-			<% for( let i = 0; i < productos.length; i++ ) { %>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href="/product/id/<%= productos[i].id %>">
-							<figure class="product-box_image">
-								<img src="<%=productos[i].productimage%>" alt="">
-							</figure>
-							<article class="product-box_data">
-								<h2><%=productos[i].productname%></h2>
-								<p><%=productos[i].productdescription%></p>
-								
-							</article>
-						</a>
-					</section>
-				</div>
-			<% } } %>
-	</div>
-	<!-- /Mis productos -->
-	 
-	<!-- footer -->
-	<%- include('./partials/footer') %>
-	<!-- /footer -->
-</body>	
+    <!-- Mis productos -->
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title">Mis productos</h2>
+            </div>
+            <!-- Show mis productos -->
+            <% if (productos && productos.length > 0) { %>
+            <% for( let i = 0; i < productos.length; i++ ) { %>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <section class="product-box">
+                        <a href="/product/id/<%= productos[i].id %>">
+                            <figure class="product-box_image">
+                                <img src="<%=productos[i].productimage%>" alt="">
+                            </figure>
+                            <article class="product-box_data">
+                                <h2><%=productos[i].productname%></h2>
+                                <p><%=productos[i].productdescription%></p>
+                                
+                            </article>
+                        </a>
+                    </section>
+                </div>
+            <% } } %>
+    </div>
+    <!-- /Mis productos -->
+     
+    <!-- footer -->
+    <%- include('./partials/footer') %>
+    <!-- /footer -->
+</body> 
 </html>

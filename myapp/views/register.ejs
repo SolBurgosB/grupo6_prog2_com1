@@ -36,36 +36,27 @@
 			<!-- Show the "ultimos" products -->
 			<div class="formularioregister">
 				<form class="fregister flogin" action="/users/newuser" method="POST">
+					 <% if (error!=undefined) { %>
+        				<p class="completare"><%= error %></p>
+    				<% } %>
 					<h2 class="subtitulo">Email</h2>
 					<input type="email" placeholder="Email" class="ervalido itemslogin" value="" name="email"> <!--que name coincida con las columnas del modelo--> 
-					<% if (error) { %>
-						<p class="completare"><%= error %></p>
-					<% }%>
+					
 					<h2 class="subtitulo">Nombre de usuario</h2>
 					<input type="text" placeholder="Nombre de usuario" class="crvalida itemslogin" value="" name="username">
-					<% if (error) { %>
-						<p class="completare"><%= error %></p>
-					<% }%>
+					
 					<h2 class="subtitulo">Contraseña</h2>
 					<input type="password" placeholder="Contraseña" class="crvalida itemslogin" value="" name="userpassword">
-					<% if (error) { %>
-						<p class="completare"><%= error %></p>
-					<% }%>
+					
 					<h2 class="subtitulo">Fecha de nacimiento</h2>
 					<input type="date" placeholder="Fecha de nacimiento" class="crvalida itemslogin" value="" name="birthday"> 
-					<% if (error) { %>
-						<p class="completare"><%= error %></p>
-					<% }%>
+					
 					<h2 class="subtitulo">DNI</h2>
 					<input type="number" placeholder="DNI" class="crvalida itemslogin" value="" name="dni"> 
-					<% if (error) { %>
-						<p class="completare"><%= error %></p>
-					<% }%>
+					
 					<h2 class="subtitulo">Foto de perfil (link)</h2>
 					<input type="text" placeholder="Foto de perfil" class="crvalida itemslogin" value="" name="profileimage"> 
-					<% if (error) { %>
-						<p class="completare"><%= error %></p>
-					<% }%>
+					
 					<section class="botoneslogin">
 						<button class="itemslogin enviarlogin" type="submit">Registrarse</button>
 						<a class="itemslogin cuenta" href="/users/login">Ya tengo una cuenta</a>
