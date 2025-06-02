@@ -34,7 +34,6 @@ const productController= {
                   productname: form.productname,
                   productdescription: form.productdescription,
                   userid: req.session.user.id,
-                  createdAt: new Date(), //VER como hacer y si no va en el create
               }
               db.Product.create(producto)
                   .then(function(resultados) {
@@ -55,7 +54,6 @@ const productController= {
                   commenttext: form.productcomment, //esto viene del modelo
                   userid: req.session.user.id,
                   productid: req.params.id,
-                  createdAt: new Date(), //VER como hacer y si no va en el create
               }
               db.Comment.create(comentario)
                   .then(function(resultados) {

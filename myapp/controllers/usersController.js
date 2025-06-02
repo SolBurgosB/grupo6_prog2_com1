@@ -43,7 +43,6 @@ const usersController={
             birthday: form.birthday,
             dni: form.dni,
             profileimage: form.profileimage,
-            createdAt: "", //VER como hacer y si no va en el create
         }
 
         if (form.email==""|| form.email==undefined) {
