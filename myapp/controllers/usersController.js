@@ -5,23 +5,6 @@ const maquillaje= db.Product
 const comentarios= db.Comment
 const usuarios= db.User
 let op=db.Sequelize.Op
-let relacion = {
-    include: [
-    {
-      association: "products", // productos que tiene el usuario
-      include: [
-        {
-          association: "comments", // comentarios recibidos en sus productos
-          include: [{ association: "user" }] // usuario que hizo ese comentario
-        }
-      ]
-    },
-    {
-      association: "comments", // comentarios que el usuario escribió
-      include: [{ association: "product" }] // producto al que comentó
-    }
-  ]
-} 
 
 const usersController={
     login: function(req, res) {
@@ -130,9 +113,14 @@ const usersController={
         if (req.session.user == undefined) {
             return res.redirect('/users/login');
         }
-        db.Product.findAll({
-            where: { userid: req.session.user.id }
-        })
+        let relacion={
+            include: [{
+              association: "comments",
+            include: [{association: "user"}]},
+            {association: "user",
+            include: [{association: "comments"}]}
+            ]}
+        db.Product.findAll({where: {userid: req.session.user.id }}, relacion)
 
             .then(function (resultados) {
                 return res.render('profile', {
@@ -144,7 +132,22 @@ const usersController={
                 return res.send(error);
             })
         },
-
+    profilecreador: function (req, res) {
+        let relacion={
+            include: [{
+              association: "products"}]}
+        db.User.findByPk(req.params.id, relacion)
+            .then(function (resultados) {
+                
+                return res.render('profile', {
+                    usuario: resultados,
+                    productos: resultados.products,
+                });
+            })
+             .catch(function(error){
+                return res.send(error);
+            })
+    },
     profileedit: function(req, res) {
         db.User.findByPk(req.session.user.id) // traer el usuario completo desde la base
             .then(function(resultados) {

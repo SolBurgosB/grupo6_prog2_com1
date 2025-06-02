@@ -4,10 +4,16 @@ const db= require("../database/models");
 const indexController= {
   index: function(req, res) {
     //res.render('index', {listado: maquillaje.products.lista});
-    /*let relacion= {
-            include: [{association: "product"}] //VER ASSOCIATION
-        }*/
-        db.Product.findAll()
+      let relacion={
+        include: [{
+          association: "comments",
+        include: [{association: "user"}]},
+        {association: "user",
+        include: [{association: "comments"}]}
+        ]}
+        
+     //VER ASSOCIATION
+        db.Product.findAll(relacion)
             .then(function(resultados){
                 return res.render("index", {listado: resultados});
             })

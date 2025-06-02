@@ -57,7 +57,7 @@ const productController= {
               }
               db.Comment.create(comentario)
                   .then(function(resultados) {
-                      return res.redirect('/')
+                      return res.redirect("/")
                   })
                   .catch(function(error) {
                       return res.send(error)
