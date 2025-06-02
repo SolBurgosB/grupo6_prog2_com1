@@ -37,6 +37,9 @@
 			<!-- Show the "ultimos" products -->
 			<div class="formulariologin">
 				<form class="flogin" action="/users/login" method="POST">
+					<% if (error!=undefined) { %>
+        				<p class="completare"><%= error %></p>
+    				<% } %>
 					<h2 class="subtitulo">Email</h2>
 					<input type="text" placeholder="Email" class="crvalida itemslogin" value="" name="email">
 					<p class="completarc">Por favor complete el campo</p>

@@ -25,43 +25,39 @@ const usersController={
     },
     create: function(req, res){
         let form=req.body;
-        
-        //guardar el usuario, traerlo del formulario de register al controlador
-        let usuario={
-            username: form.username, //esto viene del modelo
-            email: form.email,
-            userpassword: bcryptjs.hashSync(form.userpassword, 10),
-            birthday: form.birthday,
-            dni: form.dni,
-            profileimage: form.profileimage,
-        }
-
         if (form.email==""|| form.email==undefined) {
-            return res.render("register", {error: "Por favor revise el email"}) //aca usamos render para poder mostrar el error. ESTA BIEN???????
+            return res.render("register", {error: "Por favor revise el email"}) 
         } 
-         //VER si agregar then y catch, mostrar error en la vista
 
-        db.User.findOne({where: {email: form.email }})
-        .then(function (resultado) {
-            if (resultado!=null) {
-                return res.render("register", {error: "El email ya está registrado"})}
-            }) //MOSTRAR ERROR
-        .catch(function(error){
-            return res.send(error)
-        })
-        //nunca más usar render para POST, usar redirect
-         //VER si agregar then y catch, mostrar error en la vista
         if (form.userpassword.length<3 || form.userpassword==""|| form.userpassword==undefined) {
             return res.render("register", {error: "Por favor revise la contraseña"})}
         
-        db.User.create(usuario)
-            .then(function(results) {
-                return res.redirect("/users/login")
+        db.User.findOne({where: {email: form.email }})
+        .then(function (resultado) {
+            if (resultado!=null) {
+                return res.render("register", {error: "El email ya está registrado"})};
+             
+            let usuario={
+                username: form.username, 
+                email: form.email,
+                userpassword: bcryptjs.hashSync(form.userpassword, 10),
+                birthday: form.birthday,
+                dni: form.dni,
+                profileimage: form.profileimage,
+            };
+            
+            db.User.create(usuario)
+                .then(function(results) {
+                    return res.redirect("/users/login")
+                })
+                .catch(function(error) {
+                    return res.send(error)
+                });
             })
-            .catch(function(error) {
-                return res.send(error)
-            })
-    },
+        .catch(function(error){
+            return res.send(error)
+        });},
+        
     createLogin: function(req, res) {
         let userInfo = {
             email: req.body.email,
@@ -69,7 +65,6 @@ const usersController={
             recordarme:  req.body.recordarme,
         }
 
-        // validar que el mail y la pasword sean correctas
         db.User.findOne({ where: { email: userInfo.email } })       
             .then(function (resultado) {
                 if (resultado !=null) {
@@ -81,10 +76,8 @@ const usersController={
                         profileimage: resultado.profileimage
                     }
                     
-    
-                        // check de recordarme?
                         if (userInfo.recordarme != undefined) {
-                            // como se crea una cookie?
+                            
                             res.cookie("user", req.session.user, { maxAge: 150000});
                         }
                         res.redirect("/")
@@ -100,16 +93,7 @@ const usersController={
                 return res.send(error)
             })
     },
-    //CAMBIAR PARA QUE FUNCIONE COMO BASE DE DATOS
-    /*profile: function(req, res) {
-        db.User.findOne({ where: {email: req.session.user.email}}, relacion)
-            .then(function(resultados){
-                return res.render("profile", {usuario: resultados, listado: resultados.products, comentarios: resultados.comments});
-            })
-            .catch(function(error){
-                return res.send(error);
-            })
-    },*/
+    
     profile: function (req, res) {
         if (req.session.user == undefined) {
             return res.redirect('/users/login');
@@ -154,7 +138,7 @@ const usersController={
             return res.redirect("/users/login")
         }
         else{
-             db.User.findByPk(req.session.user.id) // traer el usuario completo desde la base
+             db.User.findByPk(req.session.user.id) 
             .then(function(resultados) {
                 res.render('profile-edit', { usuario: resultados });
             })

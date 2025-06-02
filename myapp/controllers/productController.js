@@ -29,9 +29,9 @@ const productController= {
 
     addProduct: function(req, res){
               let form=req.body;
-              //guardar el usuario, traerlo del formulario de register al controlador
+              
               let producto={
-                  productimage: form.productimage, //esto viene del modelo
+                  productimage: form.productimage, 
                   productname: form.productname,
                   productdescription: form.productdescription,
                   userid: req.session.user.id,
@@ -50,9 +50,9 @@ const productController= {
       } 
       else {
         let form=req.body;
-              //guardar el usuario, traerlo del formulario de register al controlador
+              
               let comentario={
-                  commenttext: form.productcomment, //esto viene del modelo
+                  commenttext: form.productcomment, 
                   userid: req.session.user.id,
                   productid: req.params.id,
               }
@@ -65,18 +65,9 @@ const productController= {
                   })     
           }
         },
-    //VERRRR
-    /*searchid: function (idBuscado) {
-      const nuevoId = [];
-      for (let i = 0; i < maquillaje.products.lista.length; i++) {
-          const cadaId = maquillaje.products.lista[i];
-      if (idBuscado==cadaId.id) {
-          nuevoId.push(cadaId)
-      }}
-      return nuevoId},*/
+    
 
     id: function(req, res){
-        //Mostrar los datos de una película las pleículas en la vista movies.ejs. Modificá el código para conseguir el objetivo.
         db.Product.findByPk(req.params.id, relacion)        
             .then(function (resultados) {
               return res.render("product", {listado: resultados}) //NO USAMOS REDIRECT PORQUE NO ES UN FORMULARIO
@@ -87,7 +78,6 @@ const productController= {
         },
 
     search: function(req, res){
-      //Mostrar los datos de una película las pleículas en la vista movies.ejs. Modificá el código para conseguir el objetivo.
       db.Product.findAll({where: {productname: { [op.like]: "%" + req.query.search + "%" }
     },
     include: [{ association: "user" }]
@@ -99,5 +89,5 @@ const productController= {
               return res.send(error)
           })
     },
-  } //para que se renderice (que aparezca) la vista index
+  } 
 module.exports=productController;

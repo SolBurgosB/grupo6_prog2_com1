@@ -3,7 +3,7 @@ const db= require("../database/models");
 
 const indexController= {
   index: function(req, res) {
-    //res.render('index', {listado: maquillaje.products.lista});
+    
       let relacion={
         include: [{
           association: "comments",
@@ -22,5 +22,5 @@ const indexController= {
     }
   }
 
-//para que se renderice (que aparezca) la vista index 
+ 
 module.exports=indexController; 
